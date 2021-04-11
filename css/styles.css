@@ -228,11 +228,18 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity 250ms var(--time-transition);
 }
 
 .is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
 }
 
 .modal {
@@ -241,12 +248,14 @@ body {
   height: 581px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 
   background-color: var(--primary-bgc);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--time-transition);
 }
 
 .modal-close-btn {
@@ -600,12 +609,12 @@ body {
   overflow: hidden;
 }
 
-.gallery-list-item:hover .gallery-text,
-.gallery-list-item:focus .gallery-text {
+.gallery-list-item:hover .gallery-overlay,
+.gallery-list-item:focus .gallery-overlay {
   transform: translateY(0);
 }
 
-.gallery-text {
+.gallery-overlay {
   position: absolute;
   bottom: 0;
 
